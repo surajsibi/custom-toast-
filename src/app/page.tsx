@@ -1,5 +1,9 @@
-import React from "react";
+import ContextComponent from "@/app/toasts/contextComponent";
 
 export default function page() {
-  return <div>page</div>;
+  return (
+    <div>
+      <ContextComponent />
+    </div>
+  );
 }
