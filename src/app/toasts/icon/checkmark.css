@@ -1,0 +1,63 @@
+.checkmark {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  border-radius: 10px;
+  position: relative;
+  transform: rotate(45deg);
+  animation: circleScale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 100ms;
+}
+
+/* Checkmark stroke */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  border-right: 2px solid var(--secondary-color, #fff);
+  border-bottom: 2px solid var(--secondary-color, #fff);
+  width: 6px;
+  height: 10px;
+
+  bottom: 6px;
+  left: 6px;
+
+  opacity: 0;
+  animation: checkmarkStroke 0.2s ease-out forwards;
+  animation-delay: 200ms;
+}
+
+/* Use CSS var to inject stroke color */
+.checkmark[data-secondary] {
+  --secondary-color: attr(data-secondary);
+}
+
+/* Circle animation */
+@keyframes circleScale {
+  from {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+/* Tick animation */
+@keyframes checkmarkStroke {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  40% {
+    width: 6px;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    height: 10px;
+    opacity: 1;
+  }
+}

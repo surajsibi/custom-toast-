@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Toast, toastStore } from "./toastStore";
 import "./toast.css";
+import { CheckmarkIcon } from "@/app/toasts/icon/CheckmarkIcon";
 
 export function ToastContainer() {
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -22,7 +23,10 @@ export function ToastContainer() {
           key={t.id}
           className="bg-[#1a1a1a] text-white py-3 px-4 rounded-lg min-w-60 relative shadow-[0_4px_14px_rgba(0,0,0,0.4)] animate-[fadeInUp_0.25s_ease] "
         >
-          {t.title && <div className="font-semibold">{t.title}</div>}
+          <div className="flex gap-4 justify-start items-center">
+            {t.icon && t.icon}
+            {t.title && <div className="font-semibold">{t.title}</div>}
+          </div>
           {t.message && (
             <div className="opacity-80 mt-2 text-sm">{t.message}</div>
           )}

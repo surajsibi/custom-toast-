@@ -1,0 +1,69 @@
+.error-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  border-radius: 10px;
+  position: relative;
+  transform: rotate(45deg);
+  animation: circleAnim 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 100ms;
+}
+
+/* Two lines of the X */
+.error-icon::before,
+.error-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 9px;
+  left: 4px;
+  width: 12px;
+  height: 2px;
+  border-radius: 3px;
+  background: var(--secondary, #fff);
+  opacity: 0;
+
+  animation: firstLineAnim 0.15s ease-out forwards;
+  animation-delay: 150ms;
+}
+
+.error-icon::before {
+  animation: secondLineAnim 0.15s ease-out forwards;
+  animation-delay: 180ms;
+  transform: rotate(90deg);
+}
+
+/* Circle pop */
+@keyframes circleAnim {
+  from {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+/* First line */
+@keyframes firstLineAnim {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Second line (vertical) */
+@keyframes secondLineAnim {
+  from {
+    transform: scale(0) rotate(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(90deg);
+    opacity: 1;
+  }
+}

@@ -1,5 +1,6 @@
 export type Toast = {
   id: string;
+  icon?: React.ReactNode | null;
   title?: string;
   message?: string;
   duration?: number;
